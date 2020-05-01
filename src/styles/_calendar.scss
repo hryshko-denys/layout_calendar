@@ -1,0 +1,47 @@
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 710px;
+  margin: 100px auto;
+
+  div {
+    width: $block-size;
+    height: $block-size;
+    margin: 1px 1px 1px 0;
+    position: relative;
+    background-color: #eee;
+    border: 1px solid #000;
+    transition: background-color 0.5s, transform 0.5s;
+  }
+
+  div:hover {
+    background-color: pink;
+    cursor: pointer;
+    transform: translate(0, -20px);
+  }
+
+  @for $i from 1 through 31 {
+    div:nth-child(#{$i})::before {
+      content: "#{$i}";
+      display: block;
+      font-family: Arial, sans-serif;
+      font-size: 30px;
+      position: absolute;
+      top: $center-percent;
+      left: $center-percent;
+      transform: translate(-$center-percent, -$center-percent);
+    }
+  }
+
+  @for $i from 1 through 7 {
+    &-#{nth($days, $i)} div:first-child {
+      margin-left: ($i - 1) * 101px;
+    }
+  }
+
+  @for $i from 28 through 30 {
+    &-#{$i} div:nth-child(n+#{$i+1}) {
+      display: none;
+    }
+  }
+}
