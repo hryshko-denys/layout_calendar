@@ -1,13 +1,13 @@
 .calendar {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: $calendar-grid-template-size;
+  grid-template-rows: $calendar-grid-template-size;
+  gap: 1px;
+
   width: 710px;
   margin: 100px auto;
 
   div {
-    width: $block-size;
-    height: $block-size;
-    margin: 1px 1px 1px 0;
     position: relative;
     background-color: #eee;
     border: 1px solid #000;
@@ -33,11 +33,18 @@
     }
   }
 
-  @for $i from 1 through 7 {
-    &-#{nth($days, $i)} div:first-child {
-      margin-left: ($i - 1) * 101px;
+  @each $day, $number in $days {
+    &-#{$day} div:first-child {
+      grid-column-start: $number;
     }
   }
+
+  // @for $i from 1 through 7 {
+  //   &-#{nth($days, $i)} div:first-child {
+  //     grid-column-start: $i+1;
+  //   }
+  // }
+  // це я через такий цикл задавав відступ при dsiplay flex
 
   @for $i from 28 through 30 {
     &-#{$i} div:nth-child(n+#{$i+1}) {
