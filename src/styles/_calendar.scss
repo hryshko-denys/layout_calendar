@@ -1,7 +1,7 @@
 .calendar {
   display: grid;
-  grid-template-columns: $calendar-grid-template-size;
-  grid-template-rows: $calendar-grid-template-size;
+  grid-template-columns: repeat(7, 100px);
+  grid-template-rows: repeat(7, 100px);
   gap: 1px;
 
   width: 710px;
@@ -9,8 +9,12 @@
 
   div {
     position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 30px;
+
     background-color: #eee;
     border: 1px solid #000;
+
     transition: background-color 0.5s, transform 0.5s;
   }
 
@@ -24,9 +28,8 @@
     div:nth-child(#{$i})::before {
       content: "#{$i}";
       display: block;
-      font-family: Arial, sans-serif;
-      font-size: 30px;
       position: absolute;
+
       top: $center-percent;
       left: $center-percent;
       transform: translate(-$center-percent, -$center-percent);
