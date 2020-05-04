@@ -39,13 +39,6 @@
     }
   }
 
-  // @for $i from 1 through 7 {
-  //   &-#{nth($days, $i)} div:first-child {
-  //     grid-column-start: $i+1;
-  //   }
-  // }
-  // це я через такий цикл задавав відступ при dsiplay flex
-
   @for $i from 28 through 30 {
     &-#{$i} div:nth-child(n+#{$i+1}) {
       display: none;
