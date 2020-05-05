@@ -24,15 +24,19 @@
     transform: translate(0, -20px);
   }
 
+  div::before {
+    display: block;
+    position: absolute;
+
+    top: $center-percent;
+    left: $center-percent;
+    transform: translate(-$center-percent, -$center-percent);
+
+  }
+
   @for $i from 1 through 31 {
     div:nth-child(#{$i})::before {
       content: "#{$i}";
-      display: block;
-      position: absolute;
-
-      top: $center-percent;
-      left: $center-percent;
-      transform: translate(-$center-percent, -$center-percent);
     }
   }
 
